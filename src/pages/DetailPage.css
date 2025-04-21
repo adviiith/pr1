@@ -1,0 +1,287 @@
+.detail-page {
+  position: relative;
+  min-height: calc(100vh - 70px);
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, #0f0f0f);
+}
+
+.detail-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.media-details {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.poster-container {
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.info-container {
+  flex: 1;
+}
+
+.media-title {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.media-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: #aaa;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.genre-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.overview {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.play-btn,
+.watchlist-btn {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.play-btn {
+  background-color: #e50914;
+  color: white;
+}
+
+.play-btn:hover {
+  background-color: #f40612;
+}
+
+.watchlist-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.watchlist-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.watchlist-btn.in-watchlist {
+  background-color: rgba(229, 9, 20, 0.2);
+  color: #e50914;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.videos-section,
+.similar-section {
+  margin-top: 40px;
+}
+
+.videos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.video-item {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  width: 100%;
+}
+
+.video-item iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.similar-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.similar-item {
+  transition: transform 0.3s ease;
+}
+
+.similar-item:hover {
+  transform: translateY(-5px);
+}
+
+.similar-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.similar-poster {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.no-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #aaa;
+  border-radius: 8px;
+}
+
+.similar-info {
+  padding: 10px 0;
+}
+
+.similar-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.similar-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.loading-container,
+.error-container,
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.error-container {
+  color: #e50914;
+}
+
+@media (max-width: 768px) {
+  .media-details {
+    flex-direction: column;
+  }
+
+  .poster-container {
+    width: 200px;
+    margin: 0 auto 20px;
+  }
+
+  .media-title {
+    font-size: 28px;
+  }
+
+  .videos-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-content {
+    padding: 20px 15px;
+  }
+
+  .media-title {
+    font-size: 24px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .similar-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+.watchlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-left: auto;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
